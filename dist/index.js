@@ -6,10 +6,8 @@ const bindForEles = (classPrefix, bindDrag, bindTouch) => {
     const selectors = classPrefix.split(',').map(prefix => `[class^=${prefix}]`).join(',');
     const els = [...document.querySelectorAll(selectors)];
     els.forEach(ele => {
-        if (window.matchMedia('(pointer: coarse)').matches) {
-            return bindTouch(ele, {});
-        }
-        return bindDrag(ele, {});
+        bindTouch(ele, {});
+        bindDrag(ele, {});
     });
 };
 
