@@ -13,7 +13,10 @@
     "release": "release-pkg",
     "test": "jest"
   },
-  "keywords": [],
+  "keywords": [
+    "webpack",
+    "plugin"
+  ],
   "author": "pengbo",
   "license": "ISC",
   "homepage": "https://github.com/PengBoUESTC/webpack-plugin-els-movable.git",
