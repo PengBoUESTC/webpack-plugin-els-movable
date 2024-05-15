@@ -1,7 +1,7 @@
 
 import { Compiler, Compilation } from 'webpack'
 import { bindForEles } from './script'
-import bindMove from 'touch-move-script'
+import { bindDrag, bindTouch } from 'touch-move-script'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 
 export interface MovableOptions {
@@ -28,9 +28,10 @@ export default function elsMovable(options: Partial<MovableOptions>) {
               new RegExp('(</body>)'),
               `${`
               <script>
-                const __bindMove__ = ${bindMove.toString()};
+                const __bindDrag__ = ${bindDrag.toString()};
+                const __bindTouch__ = ${bindTouch.toString()};
                 const __bindForEles__ = ${bindForEles.toString()};
-                __bindForEles__('${classPrefix}', __bindMove__)
+                __bindForEles__('${classPrefix}', __bindDrag__, __bindTouch__)
               </script>
             `}$1`,
             );
