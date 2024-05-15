@@ -1,6 +1,6 @@
 {
   "name": "webpack-plugin-els-movable",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "description": "",
   "main": "dist/index.js",
   "bin": {},
@@ -28,6 +28,8 @@
     "touch-move-script": "^0.1.1"
   },
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^15.0.1",
     "@rollup/plugin-typescript": "^9.0.2",
     "@types/jest": "^29.2.3",
@@ -50,8 +52,8 @@
     "webpack": "^4.28.4"
   },
   "peerDependencies": {
-    "webpack": "^4.28.4",
-    "html-webpack-plugin": "^4.5.2"
+    "html-webpack-plugin": "^4.5.2",
+    "webpack": "^4.28.4"
   },
   "lint-staged": {
     "lib/**/*.{js,ts}": [
