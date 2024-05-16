@@ -126,26 +126,38 @@ function bindTouch(el, boundInfo) {
   }
 }
 
+const isVersion4OrMore = HtmlWebpackPlugin.version && HtmlWebpackPlugin.version >= 4;
 function elsMovable(options) {
     const { classPrefix = 'movable' } = options;
     class ElsMovable {
         constructor(options) {
             this.options = options;
         }
+        replaceContent(content) {
+            return content.replace(new RegExp('(</body>)'), `${`
+        <script>
+          const __bindDrag__ = ${bindDrag.toString()};
+          const __bindTouch__ = ${bindTouch.toString()};
+          const __bindForEles__ = ${bindForEles.toString()};
+          __bindForEles__('${classPrefix}', __bindDrag__, __bindTouch__)
+        </script>
+      `}$1`);
+        }
         apply(compiler) {
             const ID = 'webpack-plugin-els-movable';
             compiler.hooks.compilation.tap(ID, (compilation) => {
-                HtmlWebpackPlugin.getHooks(compilation).beforeEmit.tapAsync(ID, (data, cb) => {
-                    data.html = data.html.replace(new RegExp('(</body>)'), `${`
-              <script>
-                const __bindDrag__ = ${bindDrag.toString()};
-                const __bindTouch__ = ${bindTouch.toString()};
-                const __bindForEles__ = ${bindForEles.toString()};
-                __bindForEles__('${classPrefix}', __bindDrag__, __bindTouch__)
-              </script>
-            `}$1`);
-                    cb(null, data);
-                });
+                if (isVersion4OrMore) {
+                    HtmlWebpackPlugin.getHooks(compilation).beforeEmit.tapAsync(ID, (data, cb) => {
+                        data.html = this.replaceContent(data.html);
+                        cb(null, data);
+                    });
+                }
+                else {
+                    compilation.hooks.htmlWebpackPluginBeforeHtmlProcessing.tapAsync(ID, (data, cb) => {
+                        data.html = this.replaceContent(data.html);
+                        cb(null, data);
+                    });
+                }
             });
         }
     }

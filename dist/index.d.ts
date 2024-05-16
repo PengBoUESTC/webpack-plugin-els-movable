@@ -4,5 +4,6 @@ export interface MovableOptions {
 }
 export default function elsMovable(options: Partial<MovableOptions>): {
     options: Partial<MovableOptions>;
+    replaceContent(content: string): string;
     apply(compiler: Compiler): void;
 };

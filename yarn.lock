@@ -6749,10 +6749,10 @@ to-regex@^3.0.1, to-regex@^3.0.2:
     regex-not "^1.0.2"
     safe-regex "^1.1.0"
 
-touch-move-script@^0.1.4:
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/touch-move-script/-/touch-move-script-0.1.4.tgz#0dbd5d4a0f2577409447eb2a4f80b12f8fd3bb99"
-  integrity sha512-0H8gGDJqVrbFzRUTWPchl61dqBoglDfTdFutj4S2INoybZl/CupLyy+VaCARDrjWwKiCMQjapCNVMtWtErVEbg==
+touch-move-script@^0.1.5:
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/touch-move-script/-/touch-move-script-0.1.5.tgz#2524c4d03ac6fac18fe4287580fa96d184612bda"
+  integrity sha512-/NtexB7BdKUBwBDlFzsL1fmfDmM8zGowkctfiAZWzaYur17TaJhh/I0geyQQ3WvFaLLHgYJ8UBgUOL3yHBPPwg==
 
 trim-newlines@^3.0.0:
   version "3.0.1"
